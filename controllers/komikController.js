@@ -43,3 +43,22 @@ async function getKomikById(req, res) {
         res.status(404).json({ success: false, error: error.message});
     }
 }
+
+async function updateKomik(req, res) {
+    try {
+        const komikData = req.body;
+
+        if (req.file) {
+            komikData.imageType = req.file.mimetype;
+            komikData.imageName = req.file.originalname;
+            komikData.imageData = req.file.buffer;
+        }
+
+        const result = await komikService.updateKomik(db, req.params.id, komikData);
+
+        res.json({ success: true, data: result });
+
+    } catch (error) {
+        res.status(400).json({ success: false, error: error.message });
+    }
+}
