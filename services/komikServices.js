@@ -1,14 +1,14 @@
 async function createKomik(database, komikData) {
-    const { title, description, author, imageType, imageName, imageData } = komikData;
+    const { judul, deskripsi, penulis, imageType, imageName, imageData } = komikData;
 
-    if (!title || !description || !author) {
-        throw new Error('Title, description, dan author wajib diisi');
+    if (!judul || !deskripsi || !penulis) {
+        throw new Error('judul, deskripsi, dan penulis wajib diisi');
     }
 
     const newKomik = await database.Komik.create({
-        title,
-        description,
-        author,
+        judul,
+        deskripsi,
+        penulis,
         imageType: imageType || null,
         imageName: imageName || null,
         imageData: imageData || null,
