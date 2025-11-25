@@ -9,11 +9,11 @@ const komikController = require('../controllers/komikController');
 const upload = multer({ storage: multer.memoryStorage() });
 
 // ====== KOMIK ROUTES ======
-router.post('/komiks', upload.single('gambar'), komikController.createKomik);
-router.get('/komiks', komikController.getAllKomik);
-router.get('/komiks/:id', komikController.getKomikById);
-router.put('/komiks/:id', upload.single('gambar'), komikController.updateKomik);
-router.delete('/komiks/:id', komikController.deleteKomik);
+router.post('/komik', upload.single('gambar'), komikController.createKomik);
+router.get('/komik', komikController.getAllKomik);
+router.get('/komik/:id', komikController.getKomikById);
+router.put('/komik/:id', upload.single('gambar'), komikController.updateKomik);
+router.delete('/komik/:id', komikController.deleteKomik);
 
 // Export router untuk digunakan di index.js
 module.exports = router;

@@ -13,7 +13,7 @@ async function createKomik(req, res) {
         }
 
         const result = await komikService.createKomik(db, komikData);
-        res.status(201),json({success:true, data: result});
+        res.status(201).json({success:true, data: result});
     } catch (error) {
         res.status(400).json({success: false, error: error.message });
     }
